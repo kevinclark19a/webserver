@@ -1,38 +1,56 @@
 #include "server/server_api.h"
 
+#include "hashmap/hash_map.h"
 #include "http/http_interface.h"
-#include "http/rest_api.h"
+#include "http/http_response.h"
 #include "logging/log_api.h"
-#include "server/rest_methods.h"
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <pthread.h>
 
 /**
- * Initializes the rest api.
+ * Helper function to call the correct function based
+ * on the passed request.
  */
-static void __initialize_REST_bindings(void);
+static http_response_t *envoke__binding(http_request_t *req);
 
 
-static pthread_mutex_t __mutex;
+static hash_map_t get_map;
 
-static bool __initialized = false;
+static hash_map_t put_map;
+
+static hash_map_t post_map;
+
+static hash_map_t delete_map;
+
 
 //////////////////
 //	API	//
 //////////////////
 
+void add_GET_binding(const char *const path, http_response_t *(*response_func)(http_request_t *)) {
+	add_mapping(&get_map, path, (void *)response_func);
+}
+
+void add_PUT_binding(const char *const path, http_response_t *(*response_func)(http_request_t *)) {
+	add_mapping(&put_map, path, (void *)response_func);
+}
+
+void add_POST_binding(const char *const path, http_response_t *(*response_func)(http_request_t *)) {
+	add_mapping(&post_map, path, (void *)response_func);
+}
+
+void add_DELETE_binding(const char *const path, http_response_t *(*response_func)(http_request_t *)) {
+	add_mapping(&delete_map, path, (void *)response_func);
+}
+
 void handle_new_connection(void *new_socket) {
 	int fd = *(int *)new_socket;
 
-	if (!__initialized) {
-		pthread_mutex_lock(&__mutex);
-		__initialize_REST_bindings();
-		pthread_mutex_unlock(&__mutex);
-	}
+	free(new_socket);
 
 	http_request_t *req = get_http_request(fd);
 	if (req != NULL) {
@@ -46,10 +64,7 @@ void handle_new_connection(void *new_socket) {
 		Log_i( (const char *const)str );
 
 		free( (void *)str );
-
 	}
-
-
 
 	close(fd);
 }
@@ -58,10 +73,48 @@ void handle_new_connection(void *new_socket) {
 //	HELPER FUNCTIONS	//
 //////////////////////////////////
 
-static void __initialize_REST_bindings() {
-	if (__initialized) return;
+static http_response_t *envoke__binding(http_request_t *req) {
 
-	add_GET_binding("/", get_index);
+	http_response_t *(*response_func)(http_request_t *);
 
-	__initialized = true;
+	switch (req->action) {
+
+	case HTTP_VERB_GET:
+		if (!has_mapping(&get_map, req->path))
+			return clone_http_response(&http_response_error404);
+
+		response_func = ( http_response_t *(*)(http_request_t *) )
+			get_mapping(&get_map, req->path);
+
+		return response_func(req);
+
+	case HTTP_VERB_PUT:
+		if (!has_mapping(&put_map, req->path))
+			return clone_http_response(&http_response_error404);
+
+		response_func = ( http_response_t *(*)(http_request_t *) )
+			get_mapping(&put_map, req->path);
+
+		return response_func(req);
+
+	case HTTP_VERB_POST:
+		if (!has_mapping(&post_map, req->path))
+			return clone_http_response(&http_response_error404);
+
+		response_func = ( http_response_t *(*)(http_request_t *) )
+			get_mapping(&post_map, req->path);
+
+		return response_func(req);
+
+	case HTTP_VERB_DELETE:
+		if (!has_mapping(&delete_map, req->path))
+			return clone_http_response(&http_response_error404);
+
+		response_func = ( http_response_t *(*)(http_request_t *) )
+			get_mapping(&delete_map, req->path);
+
+		return response_func(req);
+	}
+
+	return clone_http_response(&http_response_error404);
 }

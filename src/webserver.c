@@ -1,7 +1,7 @@
-
 #include "logging/log_api.h"
 #include "server/server_api.h"
 #include "socket/socket_api.h"
+#include "rest_methods.h"
 #include "workqueue/workqueue_api.h"
 
 #include <stdio.h>
@@ -26,12 +26,18 @@ int main(int argc, char *const argv[]) {
 		switch (c) {
 		default :
 		case 'h':
+			Log_d("HELP option parsed.");
 			return show_usage();
 		case 'p':
+			Log_d("PORT option parsed.");
 			PORT = atoi(optarg);
 			break;
 		}
 	}
+
+	Log_d("Applying REST bindings.");
+	add_GET_binding("/", REST_method__get_index);
+
 
 	int server_fd = safely_initialize_socket(PORT);
 
@@ -42,10 +48,8 @@ int main(int argc, char *const argv[]) {
 		int *new_socket = (int*)calloc(1, sizeof(int));
 		*new_socket = accept_viable_connection(server_fd);
 
-		submit_task_to_pool(handle_new_connection,
-			(void *)new_socket);
-
-		Log_i("Connection accepted.");
+		Log_i("Connection accepted: submitting task to workpool.");
+		submit_task_to_pool(handle_new_connection, (void *)new_socket);
 	}
 }
 

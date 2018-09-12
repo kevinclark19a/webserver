@@ -35,11 +35,11 @@ DIRECTORIES	:=	$(WORKING_DIR)	\
 			$(INT)/$(HAS)
 
 OBJECTS		:=	$(INT)/webserver.o		\
+			$(INT)/rest_methods.o		\
 			$(INT)/$(SOK)/socket_api.o	\
 			$(INT)/$(HTP)/http_interface.o	\
-			$(INT)/$(HTP)/rest_api.o	\
+			$(INT)/$(HTP)/http_response.o	\
 			$(INT)/$(SER)/server_api.o	\
-			$(INT)/$(SER)/rest_methods.o	\
 			$(INT)/$(LOG)/log_api.o		\
 			$(INT)/$(WQU)/workqueue_api.o	\
 			$(INT)/$(WQU)/queue.o		\

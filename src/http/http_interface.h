@@ -1,6 +1,8 @@
 #ifndef HTTP_INT_H
 #define HTTP_INT_H
 
+#include "http/http_response.h"
+
 enum _http_verb {
 	HTTP_VERB_GET,
 	HTTP_VERB_PUT,
@@ -15,18 +17,7 @@ struct _http_request {
 	char *path;
 };
 
-struct _http_response {
-	unsigned int status_code;
-	char *short_message;
-
-	char *response_type;
-
-	unsigned int num_bytes;
-	char *body;
-};
-
 typedef struct _http_request http_request_t;
-typedef struct _http_response http_response_t;
 
 /**
  * Reads from the specified socket and parses
