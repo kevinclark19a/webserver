@@ -53,7 +53,7 @@ clean:
 	rm -rf $(DIRECTORIES) $(OUT)
 
 .before:
-	sudo [ -d /web ] || mkdir /web
+	[ -d /web ] || sudo mkdir /web
 	sudo chown -R $(USER) /web
 
 $(DIRECTORIES):
