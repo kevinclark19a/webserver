@@ -2,7 +2,10 @@
 #define HTTP_INT_H
 
 enum _http_verb {
-	HTTP_VERB_GET
+	HTTP_VERB_GET,
+	HTTP_VERB_PUT,
+	HTTP_VERB_POST,
+	HTTP_VERB_DELETE
 };
 
 struct _http_request {
@@ -17,6 +20,8 @@ struct _http_response {
 	char *short_message;
 
 	char *response_type;
+
+	unsigned int num_bytes;
 	char *body;
 };
 

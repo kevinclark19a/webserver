@@ -1,11 +1,13 @@
 
 VERSION		:=	0.0.1
 
-WORKING_DIR	:=	/web/.webserver
-
 OUT		:=	webserver
 SRC		:=	src
 INT		:=	obj
+
+WORKING_DIR	:=	/web/.$(OUT)@$(VERSION)
+
+RES		:=	res
 
 SOK		:=	socket
 HTP		:=	http
@@ -36,25 +38,39 @@ OBJECTS		:=	$(INT)/webserver.o		\
 			$(INT)/$(SOK)/socket_api.o	\
 			$(INT)/$(HTP)/http_interface.o	\
 			$(INT)/$(HTP)/rest_api.o	\
-			$(INT)/$(HTP)/rest_methods.o	\
 			$(INT)/$(SER)/server_api.o	\
+			$(INT)/$(SER)/rest_methods.o	\
 			$(INT)/$(LOG)/log_api.o		\
 			$(INT)/$(WQU)/workqueue_api.o	\
 			$(INT)/$(WQU)/queue.o		\
 			$(INT)/$(HAS)/hash_map.o
 
 
-all: .before $(OUT)
+INSTALL_PATH	?=	/usr/local
+
+all: .once .client $(OUT)
 
 debug: GLOB_FLAGS += -D DEBUG_MODE -D ECHO_LOGS
 debug: all
 
 clean:
-	rm -rf $(DIRECTORIES) $(OUT)
+	rm -rf .client $(DIRECTORIES) $(OUT)
 
-.before:
+install: all
+	mkdir -p $(INSTALL_PATH)/bin
+	cp ./$(OUT) $(INSTALL_PATH)/bin/$(OUT)
+
+uninstall:
+	rm -rf $(INSTALL_PATH)/bin/$(OUT)
+
+.client: $(WORKING_DIR)
+	cp -vr ./$(RES) $(WORKING_DIR)/$(RES)
+	touch .client
+
+.once:
 	[ -d /web ] || sudo mkdir /web
 	sudo chown -R $(USER) /web
+	touch .once
 
 $(DIRECTORIES):
 	mkdir $@

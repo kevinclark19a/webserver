@@ -2,8 +2,8 @@
 
 #include "http/http_interface.h"
 #include "http/rest_api.h"
-#include "http/rest_methods.h"
 #include "logging/log_api.h"
+#include "server/rest_methods.h"
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -35,19 +35,21 @@ void handle_new_connection(void *new_socket) {
 	}
 
 	http_request_t *req = get_http_request(fd);
-	http_response_t *res = envoke_REST_binding(req);
+	if (req != NULL) {
+		http_response_t *res = envoke__binding(req);
+		write_http_response(fd, res);
 
-	char *str = (char *)calloc(1024, sizeof(char));
-	sprintf(str, "Served a request for path '%s'.",
-		req->path);
+		free( (void *)req );
 
-	Log_i( (const char *const)str );
+		char *str = (char *)calloc(1024, sizeof(char));
+		sprintf(str, "Served a request for path '%s'.", req->path);
+		Log_i( (const char *const)str );
 
-	free( (void *)str );
+		free( (void *)str );
 
-	free( (void *)req );
+	}
 
-	write_http_response(fd, res);
+
 
 	close(fd);
 }
@@ -59,7 +61,7 @@ void handle_new_connection(void *new_socket) {
 static void __initialize_REST_bindings() {
 	if (__initialized) return;
 
-	add_REST_binding("/", get_index);
+	add_GET_binding("/", get_index);
 
 	__initialized = true;
 }
