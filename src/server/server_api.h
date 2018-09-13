@@ -37,4 +37,10 @@ void add_DELETE_binding(const char *const path, http_response_t * (*response_fun
  */
 void handle_new_connection(void *new_socket);
 
+/**
+ * Serves the specified file if it is a valid target,
+ * otherwise produces a error 404 response.
+ */
+http_response_t *serve_file(http_request_t *req);
+
 #endif	// SERVER_H
