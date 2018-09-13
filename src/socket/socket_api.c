@@ -37,6 +37,9 @@ int safely_initialize_socket(unsigned int port) {
 
 	memset(__address.sin_zero, '\0', sizeof(__address.sin_zero));
 
+	const int on = 1;
+	setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+
 	if (bind(server_fd, (struct sockaddr *)&__address, sizeof(__address)) < 0) {
 		Log_e("Error binding socket to file descriptor. Aborting.");
 		exit(-1);
