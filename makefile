@@ -23,7 +23,8 @@ LIBS		:=	-pthread
 GLOB_FLAGS	:=	-D WEBSERVER__VERSION='"$(VERSION)"'			\
 			-D WEBSERVER__PROGRAM_NAME='"$(OUT)"'			\
 			-D WEBSERVER__WORKING_DIRECTORY='"$(WORKING_DIR)"'	\
-			-D WEBSERVER__N_WORKER_THREADS='20'
+			-D WEBSERVER__N_WORKER_THREADS='20'			\
+			$(DEFINE)
 
 DIRECTORIES	:=	$(WORKING_DIR)	\
 			$(INT)		\
@@ -50,11 +51,12 @@ INSTALL_PATH	?=	/usr/local
 
 all: .once .client $(OUT)
 
+debug: DEFINE += -D ECHO_LOGS
 debug: GLOB_FLAGS += -D DEBUG_MODE -D ECHO_LOGS
 debug: all
 
 clean:
-	rm -rf .client $(DIRECTORIES) $(OUT)
+	rm -rf $(DIRECTORIES) $(OUT)
 
 install: all
 	mkdir -p $(INSTALL_PATH)/bin
@@ -64,8 +66,7 @@ uninstall:
 	rm -rf $(INSTALL_PATH)/bin/$(OUT)
 
 .client: $(WORKING_DIR)
-	cp -vr ./$(RES) $(WORKING_DIR)/$(RES)
-	touch .client
+	cp -vr ./$(RES) $(WORKING_DIR)/
 
 .once:
 	[ -d /web ] || sudo mkdir /web
