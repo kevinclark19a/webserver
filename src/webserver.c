@@ -35,11 +35,16 @@ int main(int argc, char *const argv[]) {
 		}
 	}
 
-	Log_d("Applying REST bindings.");
+	Log_i("Starting Initialization of Server API...");
+
 	add_GET_binding("/", REST_method__get_index);
+
+	Log_i("Server API initialized.");
 
 
 	int server_fd = safely_initialize_socket(PORT);
+
+	Log_i("Server on and listening.");
 
 	while (1) {
 
@@ -48,7 +53,7 @@ int main(int argc, char *const argv[]) {
 		int *new_socket = (int*)calloc(1, sizeof(int));
 		*new_socket = accept_viable_connection(server_fd);
 
-		Log_i("Connection accepted: submitting task to workpool.");
+		Log_d("Connection accepted: submitting task to workpool.");
 		submit_task_to_pool(handle_new_connection, (void *)new_socket);
 	}
 }
