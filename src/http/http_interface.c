@@ -48,15 +48,18 @@ http_request_t *get_http_request(int socket) {
 }
 
 void write_http_response(int socket, http_response_t *res) {
-	char *str = (char *)calloc(4096, sizeof(char));
 
-	const char *response_header;
-	sprintf(str, "%s\n%s\n\n",
-		(response_header = __create_response_header(res)),
-		res->body);
+	const char *response_header = __create_response_header(res);
+	int header_len = strlen(response_header);
+
+	char *str = (char *)calloc(header_len + res->num_bytes, sizeof(char));
+	strcpy(str, response_header);
 	free( (void *)response_header );
 
-	write(socket, str, strlen(str));
+	memcpy(str + header_len, res->body, res->num_bytes);
+
+	write(socket, str, header_len + res->num_bytes);
+	free( (void *)str );
 }
 
 //////////////////////////////////
@@ -70,7 +73,7 @@ static const char *const __create_response_header(http_response_t *res) {
 		"Server: " WEBSERVER__PROGRAM_NAME "\n"
 		"Content-Type: %s\n"
 		"Content-Length: %u\n"
-		"Connection: Closed\n",
+		"Connection: Closed\n\n",
 		res->status_code, res->short_message,
 		res->response_type, res->num_bytes);
 

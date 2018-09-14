@@ -14,9 +14,9 @@
 
 http_response_t *REST_method__get_index(http_request_t *req) {
 	free( (void *)req->path );
-	req->path = (char *)calloc(sizeof("/index.html"), sizeof(char));
+	req->path = (char *)calloc(sizeof("/html/index.html"), sizeof(char));
 
-	sprintf(req->path, "%s", "/index.html");
+	sprintf(req->path, "%s", "/html/index.html");
 
 	return serve_file(req);
 }

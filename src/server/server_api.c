@@ -98,8 +98,8 @@ http_response_t *serve_file(http_request_t *req) {
 	int tot_bytes_read = 0;
 	int bytes_read = 0;
 	while ( (bytes_read = fread(curr, sizeof(char), __BUFF_SIZE, fp)) == __BUFF_SIZE ) {
-		buffer = (char *)realloc(buffer, (tot_bytes_read += bytes_read) );
-		curr += bytes_read;
+		buffer = (char *)realloc(buffer, (tot_bytes_read += bytes_read) + __BUFF_SIZE );
+		curr = buffer + tot_bytes_read;
 	}
 	tot_bytes_read += bytes_read;
 
