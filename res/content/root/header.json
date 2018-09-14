@@ -1,0 +1,30 @@
+{
+	"title": "Kevin Clark",
+	"links": [
+		{
+			"text": "projects",
+			"href": "https://www.google.com",
+
+			"additional-options": "target='_blank'"
+		},
+		{
+			"text": "publications",
+			"href": "https://www.bing.com",
+
+			"additional-options": "target='_blank'"
+		},
+		{
+			"text": "résumé",
+			"href": "/content/resume.pdf",
+
+			"additional-options": "target='_blank'"
+		},
+		{
+			"text": "contact me",
+			"href": "https://www.bing.com",
+
+			"additional-options": "target='_blank'"
+		}
+
+	]
+}

@@ -1,0 +1,28 @@
+.glass {
+	background-color: rgba(25,20,45, .37);
+
+	box-shadow: 0 0 8px 5px rgba(0,0,0, .37);
+	border-radius: 6px;
+
+	overflow: hidden;
+
+}
+
+.glass *:not(.blur) {
+	position: relative;
+
+	z-index: 1;
+}
+
+.glass .blur {
+	-webkit-filter: blur(10px) !important;
+
+	position: absolute;
+	top: 0vh;
+	left: 0vw;
+
+	height: 100vh;
+	width: 100vw;
+
+	z-index: -1;
+}

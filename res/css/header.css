@@ -1,0 +1,66 @@
+:root {
+	--header-height: 150px;
+	--header-width: calc(100% - 40px);
+
+	--header-top: 20px;
+	--header-left: 20px;
+}
+
+.header {
+	height: var(--header-height);
+	width: var(--header-width);
+
+	top: var(--header-top);
+	left: var(--header-left);
+
+	display: table;
+	align-items: center;
+
+	text-transform: uppercase;
+	font-family: SFDisplay;
+	position: absolute;
+}
+
+.header > .title {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+
+	width: 400px;
+	padding: calc(var(--header-left) * 3);
+
+	font-size: 54px;
+}
+
+.header > .link-container {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+
+	line-height: 75px;
+}
+
+.header .link {
+	background-color: rgba(182,207,210, .2);
+	box-shadow: 4px 4px 6px rgba(0,0,0, .4);
+	border-radius: 3px;
+
+	color: rgba(182,207,210, .87);
+
+	display: inline-block;
+	text-align: center;
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	width: 200px;
+	height: 75px;
+
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 24px;
+}
+
+.header .link:hover {
+	background-color: rgba(40,87,110, .3);
+}
