@@ -1,29 +1,23 @@
 {
+	"id": "nav-pane",
 	"title": "Kevin Clark",
+
 	"links": [
 		{
-			"text": "projects",
-			"href": "https://www.google.com",
-
-			"additional-options": "target='_blank'"
+			"id": "projectsBtn",
+			"text": "projects"
 		},
 		{
-			"text": "publications",
-			"href": "https://www.bing.com",
-
-			"additional-options": "target='_blank'"
+			"id": "publicationsBtn",
+			"text": "publications"
 		},
 		{
-			"text": "résumé",
-			"href": "/content/resume.pdf",
-
-			"additional-options": "target='_blank'"
+			"id": "resumeBtn",
+			"text": "résumé"
 		},
 		{
-			"text": "contact me",
-			"href": "https://www.bing.com",
-
-			"additional-options": "target='_blank'"
+			"id": "contactBtn",
+			"text": "contact me"
 		}
 
 	]

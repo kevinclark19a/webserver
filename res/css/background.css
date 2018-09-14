@@ -7,6 +7,11 @@ body {
 	background-repeat: no-repeat;
 }
 
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
 body .blur {
 	background-image: url("/img/background.jpg");
 	

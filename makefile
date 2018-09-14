@@ -49,7 +49,7 @@ OBJECTS		:=	$(INT)/webserver.o		\
 
 INSTALL_PATH	?=	/usr/local
 
-all: .once .client $(OUT)
+all: .once client $(OUT)
 
 debug: DEFINE += -D ECHO_LOGS
 debug: GLOB_FLAGS += -D DEBUG_MODE -D ECHO_LOGS
@@ -65,7 +65,7 @@ install: all
 uninstall:
 	rm -rf $(INSTALL_PATH)/bin/$(OUT)
 
-.client: $(WORKING_DIR)
+client: $(WORKING_DIR)
 	cp -vr ./$(RES) $(WORKING_DIR)/
 
 .once:

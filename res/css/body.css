@@ -1,0 +1,20 @@
+
+:root {
+	--body-height: 400px;
+	--body-width: 600px;
+
+	--body-top: 400px;
+	--body-left: calc( (100vw - var(--body-width)) / 2);
+}
+
+.body {
+	height: var(--body-height);
+	width: var(--body-width);
+
+	top: var(--body-top);
+	left: var(--body-left);
+	position: fixed;
+
+	z-index: 10;
+
+}

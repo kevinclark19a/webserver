@@ -18,31 +18,45 @@
 
 	text-transform: uppercase;
 	font-family: SFDisplay;
-	position: absolute;
+	position: fixed;
+
+	z-index: 20;
 }
 
-.header > .title {
+.header .title {
 	display: table-cell;
 	vertical-align: middle;
-	text-align: left;
 
-	width: 400px;
 	padding: calc(var(--header-left) * 3);
 
 	font-size: 54px;
 }
 
-.header > .link-container {
+.header .blur {
+	height: calc(var(--header-height) + var(--header-top) * 4);
+	width: calc(var(--header-width) + var(--header-left) * 4);
+}
+
+.header .link-container {
 	display: table-cell;
 	vertical-align: middle;
-	text-align: center;
+	text-align: right;
+	align-items: right;
 
 	line-height: 75px;
 }
 
+.header button {
+	border-width: 0px;
+}
+
+.header button:focus {
+	outline: none;
+}
+
 .header .link {
 	background-color: rgba(182,207,210, .2);
-	box-shadow: 4px 4px 6px rgba(0,0,0, .4);
+	box-shadow: 4px 4px 6px rgba(0,0,0, .5);
 	border-radius: 3px;
 
 	color: rgba(182,207,210, .87);
@@ -56,7 +70,6 @@
 	width: 200px;
 	height: 75px;
 
-	text-decoration: none;
 	text-transform: uppercase;
 	font-size: 24px;
 }

@@ -53,16 +53,9 @@
 
 		var element = document.getElementById(destination);
 
-		if (!element) return;
-
-		console.log(destination)
-		console.log(element.childNodes);
-
-		for (var node in element.childNodes.values()) {
-			console.log(node);
-			if (!node.classList || !node.classList.contains("permanent"))
-				element.removeChild(node)
-		};
+		while (element.firstChild) {
+			element.removeChild(element.firstChild);
+		}
 
 	};
 

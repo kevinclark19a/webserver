@@ -1,6 +1,9 @@
-<div class="title">{{title}}</div>
-<div class="link-container">
-  {{#each links}}
-    <a class="link" href="{{href}}" {{additional-options}}>{{text}}</a>
-  {{/each}}
+<div id="header__{{id}}" class="header glass">
+  <div class="blur"></div>
+  <div class="title">{{title}}</div>
+  <div class="link-container">
+    {{#each links}}
+      <button id="header-link__{{id}}" class="link" href="{{href}}" {{additional-options}}>{{text}}</button>
+    {{/each}}
+  </div>
 </div>
