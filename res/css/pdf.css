@@ -1,0 +1,10 @@
+.pdf-container {
+	top: 250px;
+	left: 10%;
+	position: absolute;
+}
+
+.embedded-pdf {
+	width: 80vw;
+	height: 1020px;
+}
