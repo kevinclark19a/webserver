@@ -1,11 +1,13 @@
 @import "jquery-ui.min.css";
 @import "jquery-ui.structure.min.css";
 @import "jquery-ui.theme.min.css";
+@import "fonts.css";
+
+@import "resizable.css";
+@import "draggable.css";
 
 @import "glass.css";
-
 @import "background.css";
-@import "fonts.css";
 
 @import "header.css";
 @import "body.css";

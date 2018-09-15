@@ -1,9 +1,9 @@
 
 :root {
-	--body-height: 400px;
-	--body-width: 600px;
+	--body-height: 50vh;
+	--body-width: 45vw;
 
-	--body-top: 400px;
+	--body-top: 35vh;
 	--body-left: calc( (100vw - var(--body-width)) / 2);
 }
 
@@ -15,6 +15,65 @@
 	left: var(--body-left);
 	position: fixed;
 
-	z-index: 10;
+	display: inline-block;
 
+	overflow-y: scroll;
+
+	z-index: 10;
 }
+
+.body .title {
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+
+	border-color: rgba(182,207,210, .87);
+	box-shadow: 3px 3px 10px rgba(0,0,0, .3);
+	background-color: rgba(182,207,210, .3);
+	border-radius: 5px;
+
+	font-size: 35px;
+	font-family: SFDisplay;
+	text-transform: uppercase;
+}
+
+.body .title, .body .title > * {
+	text-decoration: none;
+
+	color: rgba(182,207,210, .87);
+}
+
+.body .content {
+	border-radius: 3px;
+
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 3%;
+	margin-bottom: 10%;
+}
+
+.body .sub-title {
+	text-align: left;
+
+	margin-left: 10%;
+	margin-bottom: 3%;
+	margin-top: 3%;	
+	padding: 5px;
+
+	font-size: 24px;
+	font-family: SFDisplay;
+}
+
+.body .description {
+	text-align: left;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 10%;
+	padding-bottom: 5px;
+
+	font-size: 20px;
+	font-family: SFDisplay;
+}
+

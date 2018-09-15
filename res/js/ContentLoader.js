@@ -59,10 +59,18 @@
 
 	};
 
+	const remove = function(target) {
+		var element = document.getElementById(target);
+		if (!element) return;
+
+		element.parentNode.removeChild(element);
+	}
+
 	LoaderService.ContentLoader = function ContentLoader() {
 		return {
 			load: load,
-			clean: clean
+			clean: clean,
+			remove: remove
 		};
 	};
 })()

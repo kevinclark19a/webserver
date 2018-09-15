@@ -44,6 +44,8 @@ http_request_t *get_http_request(int socket) {
 	// TODO: Implement more complicated parsing for things
 	// other than the header.
 
+	free( (void *) buffer);
+
 	return req;
 }
 

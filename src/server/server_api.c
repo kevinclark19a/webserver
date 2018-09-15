@@ -66,14 +66,18 @@ void handle_new_connection(void *new_socket) {
 		http_response_t *res = envoke__binding(req);
 		write_http_response(fd, res);
 
-		free( (void *)req );
+		free( (void *)res->body );
+		free( (void *)res );
 
 		sprintf(str, "Served a request for path '%s'.", req->path);
 		Log_i( (const char *const)str );
-		memset(str, 0, 512);
 
-		free( (void *)str );
+		free( (void *)req->path );
+		free( (void *)req );
+
 	}
+
+	free( (void *)str );
 
 	close(fd);
 }

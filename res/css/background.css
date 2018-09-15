@@ -1,8 +1,9 @@
 body {
 	background-image: url("/img/background.jpg");
 
-	color: rgba(182,207,210, .87);
+	color: rgba(143,175,255, .97);
 
+	background-attatchment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -14,7 +15,8 @@ body {
 
 body .blur {
 	background-image: url("/img/background.jpg");
-	
+
 	background-size: cover;
+	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
