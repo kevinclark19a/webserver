@@ -46,6 +46,10 @@
 
 
 	$(document).ready(() => {
+		document.addEventListener("scroll", function() {
+			$('.blur').hide().show(0);
+		});
+
 		const pageLoader = LoaderService.PageLoader();
 		const contentLoader = LoaderService.ContentLoader();
 

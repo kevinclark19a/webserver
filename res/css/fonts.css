@@ -1,5 +1,5 @@
 @font-face {
-	font-family: SFDisplay;
-	src: url("/fonts/font.otf") format("opentype");
-	font-style: normal;
+	font-family: Raleway;
+	src: url("/fonts/font.ttf") format("truetype");
+	font-style: thin;
 }

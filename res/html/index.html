@@ -2,16 +2,19 @@
 <html>
 
   <head>
+    <!-- Background: Photo by Samuele Errico Piccarini on Unsplash -->
+  
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <link rel="icon" href="favicon.png" type="image/png" />
     
     <link rel="stylesheet" href="css/index.css" type="text/css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    
+    <script src="js/touch-punch.min.js"></script>
+
     <!-- Loading Scripts -->
     <script src="js/ContentLoader.js"></script>
     <script src="js/PageLoader.js"></script>
@@ -23,7 +26,10 @@
     <!-- To be populated dynamically... -->
     <div id="content-header"></div>
     <!-- To be populated dynamically... -->
-    <div id="content-body"></div>
+    <div id="content-body">
+      <div id="left-snap" class="drop-zone"></div>
+      <div id="right-snap" class="drop-zone"></div>
+    </div>
   </body>
 
 </html>
