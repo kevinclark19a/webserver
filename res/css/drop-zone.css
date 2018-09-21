@@ -1,0 +1,13 @@
+.drop-zone {
+	display: table-column;
+	border-radius: 3px;
+
+	height: 80vh;
+	width: 40vw;
+
+	z-index: 1;
+}
+
+.drop-zone:hover {
+	background-color: rgba(100,100,100, 1);
+}

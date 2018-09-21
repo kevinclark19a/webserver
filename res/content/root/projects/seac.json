@@ -1,0 +1,4 @@
+{
+	"sub-title": "Seac",
+	"description": "A minimal desktop launcher written in java and designed for simplicity of use, cross-platform compatability, and elegance. Uses the MVC pattern to preserve modularity, and utilized a trie internal data-structure to provide an iteratively improving auto-complete."
+}

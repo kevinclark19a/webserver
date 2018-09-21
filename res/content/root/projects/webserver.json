@@ -1,0 +1,4 @@
+{
+	"sub-title": "Webserver",
+	"description": "The from-scratch webserver this website is running on. Written in c and prioritizing modulatory and readability, the thousand-odd lines of code for this project include a shared worker thread-pool to handle web requests implemented with a concurrent queue and are available online on github."
+}

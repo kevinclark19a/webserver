@@ -1,0 +1,24 @@
+.resizable {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.resizable > #swgrip {
+	position: absolute;
+	top: calc(100% - 5px - 25px);
+	left: 10px;
+
+	width: 50px;
+	height: 25px;
+	background: transparent;
+}
+
+.resizable > #segrip {
+	position: absolute;
+	top: calc(100% - 5px - 25px);
+	left: calc(100% - 5px - 50px);
+
+	width: 50px;
+	height: 25px;
+	background: transparent;
+}
