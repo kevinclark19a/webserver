@@ -33,8 +33,6 @@
 }
 
 .header .blur {
-	background-position-y: calc(0 - var(--header-top) - 9%);
-	background-position-x: calc(0 - var(--header-left) - 9%);
 
 	height: calc(var(--header-height) + 18%);
 	width: calc(var(--header-width) + 2%);

@@ -3,6 +3,7 @@ body {
 
 	color: rgba(255,255,255, 1);
 
+	background-position: center;
 	background-attatchment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -16,7 +17,8 @@ body {
 body .blur {
 	background-image: url("/img/background.jpg");
 
-	background-size: cover;
+	background-position: center;
 	background-attachment: fixed;
+	background-size: cover;
 	background-repeat: no-repeat;
 }

@@ -14,10 +14,15 @@
 	top: var(--body-top);
 	left: var(--body-left);
 	position: fixed;
+	overflow-y: scroll;
 
 	display: inline-block;
 
 	z-index: 10;
+}
+
+.body .blur {
+	position: fixed;
 }
 
 .body .title {
@@ -40,7 +45,6 @@
 
 .body .title, .body .title > * {
 	text-decoration: none;
-
 	color: rgba(182,207,210, .87);
 }
 
