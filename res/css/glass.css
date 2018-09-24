@@ -1,10 +1,24 @@
 .glass {
-	background-color: rgba(45,40,65, .97);
-
 	box-shadow: 0 0 8px 5px rgba(0,0,0, .37);
-	border-radius: 6px;
+	border-radius: 7px;
 
 	position: relative;
+	overflow: hidden;
+}
+
+.glass::after {
+	content: " ";
+
+	position: absolute;
+	top: 0vh;
+	left: 0vw;
+
+	background-color: rgba(35,30,40, .5);
+
+	height: 100vh;
+	width: 100vw;
+
+	z-index: 0;
 }
 
 .glass *:not(.blur) {
@@ -20,8 +34,8 @@
 	top: 0vh;
 	left: 0vw;
 
-	height: 100vh;
-	width: 100vw;
+	height: 110vh;
+	width: 110vw;
 
 	z-index: -1;
 }

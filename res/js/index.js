@@ -24,7 +24,7 @@
 		template: "infoCardDiv",
 		destination: "content-body",
 
-		data: { type: "static", value: { id: "publications", html: "<h1>Publications</h1>" } }
+		data: { type: "static", value: { id: "publications", html: "Publications" } }
 	};
 
 	let dragOptions = {
@@ -109,9 +109,9 @@
 
 					contentLoader.load({
 						template: "content",
-						destination: "infoCardDiv__projects",
+						destination: "infoCardDiv__publications",
 
-						data: { type: "api-call", value: "/content/root/publications/__.json" }
+						data: { type: "api-call", value: "/content/root/publications/isvc.json" }
 					});
 				});
 
