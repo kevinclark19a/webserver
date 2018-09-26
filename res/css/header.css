@@ -1,9 +1,9 @@
 :root {
-	--header-height: 150px;
-	--header-width: calc(100% - 40px);
+	--header-height: 15vh;
+	--header-width: 100vw;
 
-	--header-top: 20px;
-	--header-left: 20px;
+	--header-top: 0px;
+	--header-left: 0px;
 }
 
 .header {
@@ -56,11 +56,11 @@
 }
 
 .header .link {
-	background-color: rgba(182,207,210, .2);
+	background-color: rgba(132,147,150, .2);
 	box-shadow: 4px 4px 6px rgba(0,0,0, .5);
 	border-radius: 3px;
 
-	color: rgba(182,207,210, .87);
+	color: rgba(252,247,250, .67);
 
 	display: inline-block;
 	text-align: center;
